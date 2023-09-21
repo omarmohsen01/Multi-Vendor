@@ -31,7 +31,7 @@ class FortifyServiceProvider extends ServiceProvider
             Config::set('fortify.guard','admin');
             Config::set('fortify.passwords','admins');
             Config::set('fortify.prefix','admin');
-            
+            //Config::set('fortify.home','admin/dashboard');
         }
 
         $this->app->instance(LoginResponse::class,new class implements LoginResponse{
@@ -55,7 +55,6 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
@@ -72,8 +71,10 @@ class FortifyServiceProvider extends ServiceProvider
         
         if(Config::get('fortify.guard')=='admin'){
             Fortify::authenticateUsing([new AuthenticateUser,'authenticate']);
+            Fortify::createUsersUsing(CreateNewAdmin::class);
             Fortify::viewPrefix('auth.');
         }else{
+            Fortify::createUsersUsing(CreateNewUser::class);
             Fortify::viewPrefix('front.auth.');
         }
 

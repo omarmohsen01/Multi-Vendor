@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/glightbox.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
     @stack('styles')
-
+    @livewireStyles
 </head>
 
 <body>
@@ -472,6 +472,7 @@
     <script src="{{ asset('assets/js/glightbox.min.js')}}"></script>
     <script src="{{ asset('assets/js/main.js')}}"></script>
     @stack('scripts')
+    @livewireScripts 
 </body>
 
 </html>

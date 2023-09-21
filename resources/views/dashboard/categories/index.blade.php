@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="mb-3">
-    @if(Auth::user()->can('categories.create'))
+    @if(Auth::user()->can('dashboard.categories.create'))
         <a href="{{ route('dashboard.categories.create') }}" class="btn btn-sm btn-outline-primary ml-2">Create</a>
     @endif
     <a href="{{ route('dashboard.categories.trash') }}" class="btn btn-sm btn-outline-primary ml-2">Trash</a>

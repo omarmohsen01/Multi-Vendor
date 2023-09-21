@@ -5,10 +5,10 @@
 @section('content')
 
 <div class="mb-3">
-    @if(Auth::user()->can('roles.create'))
+    @if(Auth::user()->can('dashboard.roles.create'))
         <a href="{{ route('dashboard.roles.create') }}" class="btn btn-sm btn-outline-primary ml-2">Create</a>
     @endif
-    {{-- <a href="{{ route('dashboard.roles.trash') }}" class="btn btn-sm btn-outline-primary ml-2">Trash</a> --}}
+    {{-- <a href="{{ route('roles.trash') }}" class="btn btn-sm btn-outline-primary ml-2">Trash</a> --}}
 </div>
 
 <x-alert/>

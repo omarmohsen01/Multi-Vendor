@@ -13,6 +13,6 @@
                     {{ $text }}</option>
         @endforeach
     </select>
-    @error('parent_id')
-        <div class="text-danger" style="width: 450px">{{ $message }}</div>
-    @enderror
+@error('parent_id')
+    <div class="text-danger" style="width: 450px">{{ $message }}</div>
+@enderror

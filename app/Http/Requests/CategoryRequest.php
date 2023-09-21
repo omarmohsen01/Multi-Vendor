@@ -28,6 +28,7 @@ class CategoryRequest extends FormRequest
             'parent_id'=>[
                 'nullable','integer','exists:categories,id'
             ],
+            'description'=>"string",
             'status'=>"in:active,archived"
         ];
     }

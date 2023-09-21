@@ -10,7 +10,7 @@
     <div class="form-group">
         <x-form.input label="Category Name" name="name" value="{{ $category->name }}" type="text"/>
     </div>
-    
+
     <div class="form-group">
         <label for="">Category Parent</label>
         <select name="parent_id" class="form-control @error('parent_id')
@@ -31,7 +31,7 @@
 
     <div class="form-group">
         <x-form.radio label="Status" name="status" :checked="$category->status" :options="['active'=>'Active','archived'=>'Archived']"/>
-        
+
     </div>
 
     <div class="form-group">
@@ -44,6 +44,6 @@
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
-</form> 
+</form>
 
 @endsection

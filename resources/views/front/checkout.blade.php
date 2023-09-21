@@ -254,7 +254,7 @@
                                         </div>
                                     </section>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <h6 class="title collapsed" data-bs-toggle="collapse" data-bs-target="#collapsefive"
                                         aria-expanded="false" aria-controls="collapsefive">Payment Info</h6>
                                     <section class="checkout-steps-form-content collapse" id="collapsefive"
@@ -303,7 +303,10 @@
                                             </div>
                                         </div>
                                     </section>
-                                </li>
+                                </li> --}}
+                                <div class="single-form form-default button">
+                                    <button type="submit" class="btn">pay now</button>
+                                </div>
                             </ul>
                         </div>
                     </form>

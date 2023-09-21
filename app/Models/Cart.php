@@ -13,7 +13,7 @@ class Cart extends Model
     use HasFactory;
 
     public $incrementing=false;
-
+    
     protected $fillable=[
         'cookie_id','user_id','product_id','quantity','options'
     ];
@@ -23,7 +23,7 @@ class Cart extends Model
         static::creating(function(Cart $cart){
             $cart->id=Str::uuid();
             $cart->cookie_id=Cart::getCookieID();
-
+            
         });
 
         static::addGlobalScope('cookie_id',function(Builder $builder){

@@ -11,7 +11,7 @@ class Category extends Model
 {
     use HasFactory,SoftDeletes;
     protected $fillable=[
-        'name','parent_id','decription','image','status','slug'
+        'name','parent_id','description','image','status','slug'
     ];
 
     public function scopeActive(Builder $builder)

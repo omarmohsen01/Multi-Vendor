@@ -17,8 +17,8 @@ class CategoriesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)        
-    {   
+    public function index(Request $request)
+    {
         if(Gate::denies('categories.view')){
             abort(403);
         }
@@ -49,7 +49,7 @@ class CategoriesController extends Controller
         return view('dashboard.categories.create',compact('parents'));
     }
 
-   
+
 
     /**
      * Store a newly created resource in storage.
@@ -61,13 +61,13 @@ class CategoriesController extends Controller
             'slug'=> Str::slug($request->post('name'))
         ]);
         $data=$request->except('image');
-                
+
         if($request->hasFile('image')){
             $file=$request->file('image');
             $path=$file->store('uploads',['disk'=>'public']);
             $data['image']=$path;
         }
-        
+
         Category::create($data);
         return redirect()->route('dashboard.categories.index')
                 ->with('success','Category Created');
@@ -87,7 +87,7 @@ class CategoriesController extends Controller
             $query->whereNull('parent_id')
                   ->orWhere('parent_id','<>',$id);
         })->get();
-        
+
         return view('dashboard.categories.edit',compact('category','parents'));
     }
 
@@ -100,13 +100,13 @@ class CategoriesController extends Controller
         $category=Category::find($id);
         $data=$request->except('image');
         $old_image=$category->image;
-        
+
         if($request->hasFile('image')){
             $file=$request->file('image');
             $path=$file->store('uploads',['disk'=>'public']);
             $data['image']=$path;
         }
-        
+
         $category->update($data);
 
         if($old_image && isset($date['image'])){
@@ -120,12 +120,13 @@ class CategoriesController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {   
+    {
         Gate::authorize('categories.delete');
-        
+
         $category=Category::findOrFail($id);
         $category->delete();
-        return Redirect::route('dashboard.categories.index')->with('success','category deleted');
+        return Redirect::route('dashboard.categories.index')
+            ->with('success','category deleted');
     }
 
     public function trash()
@@ -139,10 +140,10 @@ class CategoriesController extends Controller
     public function restore(Request $request,$id)
     {
         Gate::authorize('categories.delete');
-        
+
         $category=Category::onlyTrashed()->findOrFail($id);
         $category->restore();
-        
+
         return redirect()->route('dashboard.categories.trash')
         ->with('success','Caregory Restored');
     }
@@ -156,7 +157,7 @@ class CategoriesController extends Controller
         if($category->image){
             Storage::disk('public')->delete($category->image);
         }
-        
+
         return redirect()->route('dashboard.categories.trash')
         ->with('success','Caregory Deleted');
     }

@@ -1,53 +1,53 @@
 <?php return[
     [
         'icon'=>'nav-icon fas fa-tachometer-alt',
-        'route'=>'dashboard.dashboard',
+        'route'=>'admin',
         'title'=>'dashboard',
-        'active'=>'dashboard.dashboard'
+        'active'=>'dashboard'
     ],
     [
         'icon'=>'fas fa-tags nav-icon',
-        'route'=>'dashboard.categories.index',
+        'route'=>'admin/categories',
         'title'=>'Categories',
-        'active'=>'dashboard.categories.*',
+        'active'=>'categories.*',
         'ability'=>'categories.view'
     ],
     [
         'icon'=>'fas fa-box nav-icon',
-        'route'=>'dashboard.products.index',
+        'route'=>'admin/products',
         'title'=>'Products',
-        'active'=>'dashboard.proudcts.*',
+        'active'=>'proudcts.*',
         'ability'=>'products.view'
     ],
     [
         'icon'=>'fas fa-receipt nav-icon',
-        'route'=>'dashboard.orders.index',
+        'route'=>'admin/orders',
         'title'=>'Orders',
-        'active'=>'dashboard.orders.*',
+        'active'=>'orders.*',
         'ability'=>'orders.view'
     ],
     [
-        'icon'=>'fas fa-cogs nav-icon',
-        'route'=>'dashboard.roles.index',
+        'icon'=>'fas fa-cogs  nav-icon',
+        'route'=>'admin/roles',
         'title'=>'Roles',
         'badge'=>'new',
-        'active'=>'dashboard.roles.*',
+        'active'=>'roles.*',
         'ability'=>'roles.view'
     ],
     [
         'icon'=>'fas fa-users nav-icon',
-        'route'=>'dashboard.users.index',
+        'route'=>'admin/users',
         'title'=>'Users',
         'badge'=>'new',
-        'active'=>'dashboard.users.*',
+        'active'=>'users.*',
         'ability'=>'users.view'
     ],
     [
         'icon'=>'fas fa-user nav-icon',
-        'route'=>'dashboard.admins.index',
+        'route'=>'admin/admins',
         'title'=>'Admins',
         'badge'=>'new',
-        'active'=>'dashboard.admins.*',
+        'active'=>'admins.*',
         'ability'=>'admins.view'
     ],
 ];

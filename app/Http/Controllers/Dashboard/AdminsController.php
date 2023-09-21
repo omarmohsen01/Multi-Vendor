@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Role;
+use App\Models\RoleAbility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -16,7 +17,7 @@ class AdminsController extends Controller
     public function index()
     {
         Gate::authorize('admins.view');
-        $admins=Admin::paginate();
+        $admins=Admin::paginate(10);
         return view('dashboard.admins.index',compact('admins'));
     }
 
@@ -28,7 +29,7 @@ class AdminsController extends Controller
         return view('dashboard.admins.create',[
                     'roles'=>Role::all(),
                     'admin'=>new Admin()
-            ]); 
+            ]);
     }
 
     /**
@@ -36,12 +37,18 @@ class AdminsController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
             'name'=>'required|string|max:255',
-            'roles'=>'required|array'
+            'email'=>'required|email|max:255',
+            'password'=>'required',
+            'super_admin'=>'required|exists:admin,super_admin',
+            // 'roles'=>'required|array'
         ]);
+
         $admin=Admin::create($request->all());
-        $admin->roles()->attach($request->roles);
+        // RoleAbility::create($request->role_id);
+        // $admin->roles()->attach($request->roles);
 
         return redirect()
                 ->route('dashboard.admins.index')

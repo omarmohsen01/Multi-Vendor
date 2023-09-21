@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Route;
 Route::group([
         'middleware'=>['auth:admin'],
         'as'=>'dashboard.',
-        'prefix'=>'admin/dashboard'
-    ],function(){    
+        'prefix'=>'admin/'
+    ],function(){
     Route::get('/',[DashboardController::class,'index'])->name('dashboard');
-    
+
     Route::get('profile',[ProfileController::class,'edit'])->name('profile.edit');
     Route::patch('profile',[ProfileController::class,'update'])->name('profile.update');
 
@@ -24,7 +24,7 @@ Route::group([
     Route::delete('/categories/{category}/forceDelete',[CategoriesController::class,'forceDelete'])->name('categories.forceDelete');
     Route::resource('/categories',CategoriesController::class);
     Route::resource('/admins',AdminsController::class);
-    
+
     Route::resource('/products',ProductsController::class);
     Route::resource('/roles',RolesController::class);
 
